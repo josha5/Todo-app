@@ -6,12 +6,15 @@ let todoRoutes = require("./routes/todos");
 const bodyParser = require("body-parser");
 
 
-/*********MIDDLEWARE *********/
+/********* MIDDLEWARE *********/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/views"));
+
 
 app.get("/", (req, res) => {
-    res.send("HI THERE FROM THE ROOT ROUTE");
+    res.sendFile("index.html");
 });
 
 /*********USE ROUTES **********/
